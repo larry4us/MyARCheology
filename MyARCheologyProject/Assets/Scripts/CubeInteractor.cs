@@ -31,14 +31,12 @@ public class CubeInteractor : MonoBehaviour, IInteractable
 
     private void PickOrDrop()
     {
-        if (!isHeld)
+       if (HoldingManager.Instance.TryPickUp(gameObject))
         {
-            Debug.Log("Segurando o objeto");
-            HoldingManager.Instance.PickUp(gameObject);
             isHeld = true;
-        } else
+        }
+        else
         {
-            Debug.Log("Largando o objeto");
             HoldingManager.Instance.Drop();
             isHeld = false;
         }
