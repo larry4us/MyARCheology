@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "MyARCheologyProject.sln"
+    "dotnet.defaultSolution": "MyARCheologyProject.slnx"
 }
