@@ -12,11 +12,11 @@ public class CabinetController : MonoBehaviour
         if (collision.transform.TryGetComponent<IInteractable>(out IInteractable interactable))
         {
             // Poder guardar no armário
-            TryToPuOnCabinet(collision.gameObject);
+            TryToPutOnCabinet(collision.gameObject);
         }
     }
 
-    private void TryToPuOnCabinet(GameObject obj)
+    private void TryToPutOnCabinet(GameObject obj)
     {
         if (GetAvailableSpot() is SpotController availableSpot)
         {
