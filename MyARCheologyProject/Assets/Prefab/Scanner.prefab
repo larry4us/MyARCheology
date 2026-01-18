@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8948206011996152340}
   - component: {fileID: 3629219222328323630}
+  - component: {fileID: 1394736225549794117}
   m_Layer: 0
   m_Name: Scanner
   m_TagString: Untagged
@@ -47,8 +48,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spot: {fileID: 4904271401407977695}
-  scamDuration: 3
+  scanDuration: 3
   scamUI: {fileID: 0}
+--- !u!95 &1394736225549794117
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188022128529373436}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4e5a1ef147e3444eaf470ca049944bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2273002482964511119
 PrefabInstance:
   m_ObjectHideFlags: 0
