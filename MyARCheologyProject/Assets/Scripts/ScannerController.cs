@@ -7,7 +7,9 @@ public class ScannerController : MonoBehaviour
 
     [SerializeField] private SpotController spot;
     [SerializeField] private float scanDuration = 4f;
-    [SerializeField] GameObject scamUI;
+    [SerializeField] GameObject scanUI;
+
+    private int scanCount = 0;
     private Animator animator;
 
     void Start()
@@ -39,6 +41,9 @@ public class ScannerController : MonoBehaviour
                 rb.isKinematic = true;
             }
 
+        scanCount++;
+        Debug.Log("StartScanning chamado: " + scanCount);
+
             StartCoroutine(StartScanning());
         }
     }
@@ -48,12 +53,14 @@ public class ScannerController : MonoBehaviour
        Debug.Log("Scaneando...");
 
        animator.SetBool("isScanning", true);
+       scanUI.SetActive(false);
 
        yield return new WaitForSeconds(scanDuration);
 
        Debug.Log("Scan complete!");
 
        animator.SetBool("isScanning", false);
+       scanUI.SetActive(true);
     }
 
 }
