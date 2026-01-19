@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeInteractor : MonoBehaviour, IInteractable
+public class ObjectInteractor : MonoBehaviour, IInteractable
 {
     private bool isHeld = false;
 
     [SerializeField] private SOObjectInfo objectInfo;
+
+    [SerializeField] private float objectInfoHeight = 0.3f;
 
     public void OnInteract()
     {
@@ -56,7 +58,15 @@ public class CubeInteractor : MonoBehaviour, IInteractable
         {
             infoController.SetObjectInfo(objectInfo);
             infoController.SetVisible(true);
-            infoController.transform.SetParent(transform);
+            //infoController.transform.SetParent(transform);
+            
+            // parentear mantendo mundo (inclui escala)
+    infoController.transform.SetParent(transform, true);
+
+    // posicionar acima do objeto em WORLD (não local)
+    var rend = GetComponentInChildren<Renderer>();
+    Vector3 topo = rend != null ? rend.bounds.max : transform.position;
+    infoController.transform.position = topo + Vector3.up * objectInfoHeight;
         }
     }
 
@@ -66,8 +76,8 @@ public class CubeInteractor : MonoBehaviour, IInteractable
 
         if (infoController != null)
         {
-            infoController.SetVisible(false);
-            //infoController.transform.SetParent(null);
+            //infoController.SetVisible(false);
+            infoController.transform.SetParent(null);
         }
     }
 }
