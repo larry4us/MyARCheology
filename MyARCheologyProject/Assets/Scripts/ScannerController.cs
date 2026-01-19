@@ -8,8 +8,6 @@ public class ScannerController : MonoBehaviour
     [SerializeField] private SpotController spot;
     [SerializeField] private float scanDuration = 4f;
     [SerializeField] GameObject scanUI;
-
-    private int scanCount = 0;
     private Animator animator;
 
     void Start()
@@ -27,11 +25,10 @@ public class ScannerController : MonoBehaviour
         }
     }
 
-    private void TryToPutOnSpot(GameObject obj)
+     private void TryToPutOnSpot(GameObject obj)
     {
         if (!spot.IsOccupied())
         {
-            Debug.Log("Conseguiu colocar no spot");
             obj.transform.SetParent(spot.transform);
             obj.transform.localPosition = Vector3.zero;
             obj.transform.localRotation = Quaternion.identity;
@@ -41,28 +38,33 @@ public class ScannerController : MonoBehaviour
                 rb.isKinematic = true;
             }
 
-        scanCount++;
-        Debug.Log("StartScanning chamado: " + scanCount);
+            if (obj.TryGetComponent(out ObjectInteractor interactor))
+            {
+                StartCoroutine(StartScanning(interactor));
+            }
 
-            StartCoroutine(StartScanning());
+            
         }
     }
 
-     private IEnumerator StartScanning()
+    private IEnumerator StartScanning(ObjectInteractor interactor)
     {
-       Debug.Log("Scaneando...");
+        Debug.Log("Starting scan...");
 
-       animator.SetBool("isScanning", true);
-       scanUI.SetActive(false);
+        animator.SetBool("isScanning", true);
 
-       yield return new WaitForSeconds(scanDuration);
+        scanUI.SetActive(false);
 
-       Debug.Log("Scan complete!");
+        interactor.SetLocked(true);
 
-       animator.SetBool("isScanning", false);
-       scanUI.SetActive(true);
-       yield return new WaitForSeconds(scanDuration);
-       scanUI.SetActive(false);
+        yield return new WaitForSeconds(scanDuration);
+        Debug.Log("Scan complete!");
+
+        animator.SetBool("isScanning", false);
+
+        scanUI.SetActive(true);
+
+        interactor.SetLocked(false);
+        interactor.SetScanned(true);
     }
-
 }

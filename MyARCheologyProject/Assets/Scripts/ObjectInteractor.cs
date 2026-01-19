@@ -5,10 +5,12 @@ using UnityEngine;
 public class ObjectInteractor : MonoBehaviour, IInteractable
 {
     private bool isHeld = false;
+    private bool isLocked = false;
+    private bool isScanned = false;
 
     [SerializeField] private SOObjectInfo objectInfo;
 
-    [SerializeField] private float objectInfoHeight = 0.3f;
+    [SerializeField] private float infoDisplayHeight = 2f;
 
     public void OnInteract()
     {
@@ -48,9 +50,9 @@ public class ObjectInteractor : MonoBehaviour, IInteractable
         }
     }
 
-    private void ShowObjectInfo()
+   private void ShowObjectInfo()
     {
-        if (objectInfo == null) return;
+        if (objectInfo == null || isScanned == false) return;
 
         var infoController = FindObjectOfType<ObjectInfoController>();
 
@@ -58,26 +60,30 @@ public class ObjectInteractor : MonoBehaviour, IInteractable
         {
             infoController.SetObjectInfo(objectInfo);
             infoController.SetVisible(true);
-            //infoController.transform.SetParent(transform);
-            
-            // parentear mantendo mundo (inclui escala)
-    infoController.transform.SetParent(transform, true);
 
-    // posicionar acima do objeto em WORLD (não local)
-    var rend = GetComponentInChildren<Renderer>();
-    Vector3 topo = rend != null ? rend.bounds.max : transform.position;
-    infoController.transform.position = topo + Vector3.up * objectInfoHeight;
+            infoController.transform.SetParent(transform);
+            infoController.transform.localPosition = new Vector3(0, infoDisplayHeight, 0);
         }
     }
 
-     private void HideObjectInfo()
+    private void HideObjectInfo()
     {
         var infoController = FindObjectOfType<ObjectInfoController>();
 
         if (infoController != null)
         {
-            //infoController.SetVisible(false);
+            infoController.SetVisible(false);
             infoController.transform.SetParent(null);
         }
+    }
+
+    public void SetLocked(bool locked = true)
+    {
+        isLocked = locked;
+    }
+
+    public void SetScanned(bool scanned = true)
+    {
+        isScanned = scanned;
     }
 }
