@@ -9,7 +9,8 @@ public class StartExperience : MonoBehaviour
 
         public void OnStartExperience(ARPlane plane)
     {
-        var scene = Instantiate(cube, plane.center, Quaternion.identity);
+        var pos = plane.transform.TransformPoint(plane.center);
+        var scene = Instantiate(cube, pos, Quaternion.identity);
 
         for (int i = 0; i < scene.transform.childCount; i++)
         {
@@ -18,9 +19,10 @@ public class StartExperience : MonoBehaviour
         }
     }
     IEnumerator ScaleUp(GameObject obj, float duration)
-    {
-        Vector3 initialScale = Vector3.zero;
+    {   
+
         Vector3 targetScale = obj.transform.localScale;
+        Vector3 initialScale = targetScale * 0.01f; //1% do tamanho original
 
         float elapsedTime = 0f;
 
@@ -28,9 +30,49 @@ public class StartExperience : MonoBehaviour
 
         while (elapsedTime < duration)
         {
+            DebugFisica(obj);
             obj.transform.localScale = Vector3.Lerp(initialScale, targetScale, (elapsedTime / duration));
             elapsedTime += Time.deltaTime;
+            
             yield return null;
         }
     }
+
+    void DebugFisica(GameObject obj)
+{
+    Debug.Log($"--- DEBUG FÍSICA: {obj.name} ---");
+
+    // Transform
+    Debug.Log($"Scale (local): {obj.transform.localScale}");
+    Debug.Log($"Scale (lossy): {obj.transform.lossyScale}");
+    Debug.Log($"Position: {obj.transform.position}");
+
+    // Rigidbody
+    var rb = obj.GetComponent<Rigidbody>();
+    if (rb != null)
+    {
+        Debug.Log($"Rigidbody | Mass: {rb.mass}, UseGravity: {rb.useGravity}, IsKinematic: {rb.isKinematic}");
+        Debug.Log($"Velocity: {rb.velocity}");
+    }
+    else
+    {
+        Debug.Log("Rigidbody: NÃO EXISTE");
+    }
+
+    // BoxCollider
+    var box = obj.GetComponent<BoxCollider>();
+    if (box != null)
+    {
+        Vector3 worldSize = Vector3.Scale(box.size, obj.transform.lossyScale);
+
+        Debug.Log($"BoxCollider | Size (local): {box.size}");
+        Debug.Log($"BoxCollider | Size (world): {worldSize}");
+        Debug.Log($"BoxCollider | Center: {box.center}");
+    }
+    else
+    {
+        Debug.Log("BoxCollider: NÃO EXISTE");
+    }
+}
+
 }
