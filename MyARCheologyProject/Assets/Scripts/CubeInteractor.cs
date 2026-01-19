@@ -6,6 +6,8 @@ public class CubeInteractor : MonoBehaviour, IInteractable
 {
     private bool isHeld = false;
 
+    [SerializeField] private SOObjectInfo objectInfo;
+
     public void OnInteract()
     {
         Debug.Log("Comecei a interagir...");
@@ -34,11 +36,38 @@ public class CubeInteractor : MonoBehaviour, IInteractable
        if (HoldingManager.Instance.TryPickUp(gameObject))
         {
             isHeld = true;
+            ShowObjectInfo();
         }
         else
         {
             HoldingManager.Instance.Drop();
             isHeld = false;
+            HideObjectInfo();
+        }
+    }
+
+    private void ShowObjectInfo()
+    {
+        if (objectInfo == null) return;
+
+        var infoController = FindObjectOfType<ObjectInfoController>();
+
+        if (infoController != null)
+        {
+            infoController.SetObjectInfo(objectInfo);
+            infoController.SetVisible(true);
+            infoController.transform.SetParent(transform);
+        }
+    }
+
+     private void HideObjectInfo()
+    {
+        var infoController = FindObjectOfType<ObjectInfoController>();
+
+        if (infoController != null)
+        {
+            infoController.SetVisible(false);
+            //infoController.transform.SetParent(null);
         }
     }
 }

@@ -61,6 +61,8 @@ public class ScannerController : MonoBehaviour
 
        animator.SetBool("isScanning", false);
        scanUI.SetActive(true);
+       yield return new WaitForSeconds(scanDuration);
+       scanUI.SetActive(false);
     }
 
 }
