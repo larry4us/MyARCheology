@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc49d66f85cf949bcba427739bd8b904, type: 3}
   m_Name: CylinderInfo
   m_EditorClassIdentifier: 
-  objectName: 
-  description: 
+  objectName: Cilindro
+  description: "Este \xE9 o cilindro mais descritivo que o mundo j\xE1 viu."
