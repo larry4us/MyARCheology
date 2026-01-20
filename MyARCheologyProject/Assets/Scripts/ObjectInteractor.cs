@@ -10,7 +10,7 @@ public class ObjectInteractor : MonoBehaviour, IInteractable
 
     [SerializeField] private SOObjectInfo objectInfo;
 
-    [SerializeField] private float infoDisplayHeight = 2f;
+    [SerializeField] private float infoDisplayHeight = 5f;
 
     public void OnInteract()
     {
@@ -62,7 +62,7 @@ public class ObjectInteractor : MonoBehaviour, IInteractable
             infoController.SetVisible(true);
 
             infoController.transform.SetParent(transform);
-            infoController.transform.localPosition = new Vector3(0, infoDisplayHeight, 0);
+            infoController.transform.localPosition = new Vector3(0, 0, infoDisplayHeight);
         }
     }
 

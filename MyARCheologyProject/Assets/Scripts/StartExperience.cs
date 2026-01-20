@@ -30,7 +30,7 @@ public class StartExperience : MonoBehaviour
 
         while (elapsedTime < duration)
         {
-            DebugFisica(obj);
+            //DebugFisica(obj);
             obj.transform.localScale = Vector3.Lerp(initialScale, targetScale, (elapsedTime / duration));
             elapsedTime += Time.deltaTime;
             

@@ -13,6 +13,8 @@ public class ScannerController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();  
+        animator.SetBool("isScanning", false);
+        //scanUI.SetActive(false);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -25,7 +27,7 @@ public class ScannerController : MonoBehaviour
         }
     }
 
-     private void TryToPutOnSpot(GameObject obj)
+      private void TryToPutOnSpot(GameObject obj)
     {
         if (!spot.IsOccupied())
         {

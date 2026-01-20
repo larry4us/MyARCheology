@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectInfo: {fileID: 11400000, guid: f167b109f205946e8bc5e9c583e23035, type: 2}
+  infoDisplayHeight: 2
 --- !u!54 &-5945482611575675777
 Rigidbody:
   m_ObjectHideFlags: 0
