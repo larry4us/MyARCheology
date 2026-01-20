@@ -9,4 +9,6 @@ public class SOObjectInfo : ScriptableObject
 
     [TextArea]
     public string description;
+
+    public Sprite icon;
 }
