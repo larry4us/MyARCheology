@@ -290,8 +290,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 970040721}
-  holdDistance: 0.5
+  holdDistance: 1
   speed: 10
+  verticalOffset: -0.15
+  matchCameraRotation: 1
 --- !u!4 &476287374
 Transform:
   m_ObjectHideFlags: 0

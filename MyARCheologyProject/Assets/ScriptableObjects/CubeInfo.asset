@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Cubo
   description: "Este \xE9 o cubo mais descritivo que o mundo j\xE1 viu"
+  icon: {fileID: 21300000, guid: f9e6d8a7f941049e3a17d025c44a07e5, type: 3}
