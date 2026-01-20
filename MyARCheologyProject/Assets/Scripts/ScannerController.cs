@@ -8,17 +8,17 @@ public class ScannerController : MonoBehaviour
     [SerializeField] private SpotController spot;
     [SerializeField] private float scanDuration = 4f;
     [SerializeField] GameObject scanUI;
-    private Animator animator;
+    private Animator scannerAnimator;
 
     void Start()
     {
-        animator = GetComponent<Animator>();  
-        animator.SetBool("isScanning", false);
+        scannerAnimator = GetComponent<Animator>();
+        scannerAnimator.SetBool("isScanning", false);
         //scanUI.SetActive(false);
     }
 
     void OnCollisionEnter(Collision collision)
-    {   
+    {
         Debug.Log("Colidiu");
         if (collision.transform.TryGetComponent<IInteractable>(out IInteractable interactable))
         {
@@ -27,7 +27,7 @@ public class ScannerController : MonoBehaviour
         }
     }
 
-      private void TryToPutOnSpot(GameObject obj)
+    private void TryToPutOnSpot(GameObject obj)
     {
         if (!spot.IsOccupied())
         {
@@ -45,15 +45,13 @@ public class ScannerController : MonoBehaviour
                 StartCoroutine(StartScanning(interactor));
             }
 
-            
         }
     }
-
     private IEnumerator StartScanning(ObjectInteractor interactor)
     {
         Debug.Log("Starting scan...");
 
-        animator.SetBool("isScanning", true);
+        scannerAnimator.SetBool("isScanning", true);
 
         scanUI.SetActive(false);
 
@@ -62,11 +60,12 @@ public class ScannerController : MonoBehaviour
         yield return new WaitForSeconds(scanDuration);
         Debug.Log("Scan complete!");
 
-        animator.SetBool("isScanning", false);
+        scannerAnimator.SetBool("isScanning", false);
 
         scanUI.SetActive(true);
 
         interactor.SetLocked(false);
         interactor.SetScanned(true);
     }
+
 }
