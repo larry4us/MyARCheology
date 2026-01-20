@@ -14,6 +14,8 @@ public class InitialSetup : MonoBehaviour
 
     [SerializeField] private StartExperience startExperience;
 
+    [SerializeField] private Material floorMaterial;
+
     void OnEnable()
     {
         Debug.Log("Adicionando evento");
@@ -31,7 +33,10 @@ public class InitialSetup : MonoBehaviour
         startExperienceUI.SetActive(false);
         planeManager.enabled = false;
 
-        startExperience.OnStartExperience(GetBiggestPlane());
+        var biggestPlane = GetBiggestPlane();
+        ApplyFloorMaterial(biggestPlane);
+        startExperience.OnStartExperience(biggestPlane);
+
     }
 
     private void onPlanesUpdated(ARPlanesChangedEventArgs args)
@@ -64,4 +69,21 @@ public class InitialSetup : MonoBehaviour
 
         return biggestPlane;
     }
+
+    private void ApplyFloorMaterial(ARPlane plane)
+{
+    var renderer = plane.GetComponent<MeshRenderer>();
+    if (renderer != null && floorMaterial != null)
+    {
+        renderer.material = floorMaterial;
+    }
+
+    // opcional: remover borda pontilhada
+    var line = plane.GetComponent<LineRenderer>();
+    if (line != null)
+    {
+        line.enabled = false;
+    }
+}
+
 }

@@ -94,6 +94,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SupportCabinet
       objectReference: {fileID: 0}
+    - target: {fileID: 1147649073125747450, guid: 752696136059d43fe9dbae8fad23a641, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 915feabb75cbf4472a25d48c84466124, type: 2}
     - target: {fileID: 5753295869553036037, guid: 752696136059d43fe9dbae8fad23a641, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.9600001
