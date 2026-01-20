@@ -10,7 +10,7 @@ public class ObjectInteractor : MonoBehaviour, IInteractable
 
     [SerializeField] private SOObjectInfo objectInfo;
 
-    [SerializeField] private float infoDisplayHeight = 5f;
+    [SerializeField] private float infoDisplayHeight = 2f;
 
     public void OnInteract()
     {
