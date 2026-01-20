@@ -12,6 +12,8 @@ public class HoldingManager : MonoBehaviour
     [SerializeField] private float holdDistance = 0.5f;
     [SerializeField] private float speed = 10f;
 
+    [SerializeField] private bool matchCameraRotation = true;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -24,15 +26,31 @@ public class HoldingManager : MonoBehaviour
         }
     }
 
-
     void Update()
+{
+    if (heldObject != null)
     {
-        if (heldObject != null)
+        Vector3 targetPosition = cameraTransform.position + cameraTransform.forward * holdDistance;
+
+        heldObject.transform.position =
+            Vector3.Lerp(heldObject.transform.position, targetPosition, Time.deltaTime * speed);
+
+        if (matchCameraRotation)
         {
-            Vector3 targetPosition = cameraTransform.position + cameraTransform.forward * holdDistance;
-            heldObject.transform.position = Vector3.Lerp(heldObject.transform.position, targetPosition, Time.deltaTime * speed);
-        }  
+            Quaternion targetRot = Quaternion.LookRotation(cameraTransform.forward, Vector3.up);
+            heldObject.transform.rotation =
+                Quaternion.Slerp(heldObject.transform.rotation, targetRot, Time.deltaTime * speed);
+        }
     }
+}
+//     void Update()
+//     {
+//         if (heldObject != null)
+//         {
+//             Vector3 targetPosition = cameraTransform.position + cameraTransform.forward * holdDistance;
+//             heldObject.transform.position = Vector3.Lerp(heldObject.transform.position, targetPosition, Time.deltaTime * speed);
+//         }  
+//     }
 
     // Pick up
 

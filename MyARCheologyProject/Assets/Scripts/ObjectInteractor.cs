@@ -62,7 +62,7 @@ public class ObjectInteractor : MonoBehaviour, IInteractable
             infoController.SetVisible(true);
 
             infoController.transform.SetParent(transform);
-            infoController.transform.localPosition = new Vector3(0, 0, infoDisplayHeight);
+            infoController.transform.localPosition = Vector3.up * infoDisplayHeight;
         }
     }
 
