@@ -12,6 +12,8 @@ public class ObjectInteractor : MonoBehaviour, IInteractable
 
     [SerializeField] private float infoDisplayHeight = 2f;
 
+    [SerializeField] private MaterialCleaner materialCleaner;
+
     public void OnInteract()
     {
         Debug.Log("Comecei a interagir...");
@@ -85,5 +87,14 @@ public class ObjectInteractor : MonoBehaviour, IInteractable
     public void SetScanned(bool scanned = true)
     {
         isScanned = scanned;
+        if (isScanned) TryCleanObjectMaterial();
+    }
+
+    private void TryCleanObjectMaterial()
+    {
+        if (materialCleaner != null)
+        {
+            materialCleaner.Clean();
+        }
     }
 }
