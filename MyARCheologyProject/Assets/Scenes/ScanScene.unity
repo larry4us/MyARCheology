@@ -155,6 +155,7 @@ MonoBehaviour:
   planeManager: {fileID: 151853166}
   startExperienceUI: {fileID: 1353321742}
   startExperience: {fileID: 558608058}
+  floorMaterial: {fileID: 2100000, guid: 1c4b770661e0149328d98859f24de8a8, type: 2}
 --- !u!4 &48283612
 Transform:
   m_ObjectHideFlags: 0

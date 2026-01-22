@@ -25,7 +25,8 @@ public class HoleInteractor : MonoBehaviour, IInteractable
         rigidBody.isKinematic = boolean;
     }
     public void OnInteract()
-    {
+    {   
+        Debug.Log("OnInteract!");
         var hiddenObjectIsInteractable = hiddenObject.GetComponent<ObjectInteractor>() != null;
         if (hiddenObjectIsInteractable)
         {   
