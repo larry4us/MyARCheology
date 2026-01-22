@@ -37,42 +37,4 @@ public class StartExperience : MonoBehaviour
             yield return null;
         }
     }
-
-    void DebugFisica(GameObject obj)
-{
-    Debug.Log($"--- DEBUG FÍSICA: {obj.name} ---");
-
-    // Transform
-    Debug.Log($"Scale (local): {obj.transform.localScale}");
-    Debug.Log($"Scale (lossy): {obj.transform.lossyScale}");
-    Debug.Log($"Position: {obj.transform.position}");
-
-    // Rigidbody
-    var rb = obj.GetComponent<Rigidbody>();
-    if (rb != null)
-    {
-        Debug.Log($"Rigidbody | Mass: {rb.mass}, UseGravity: {rb.useGravity}, IsKinematic: {rb.isKinematic}");
-        Debug.Log($"Velocity: {rb.velocity}");
-    }
-    else
-    {
-        Debug.Log("Rigidbody: NÃO EXISTE");
-    }
-
-    // BoxCollider
-    var box = obj.GetComponent<BoxCollider>();
-    if (box != null)
-    {
-        Vector3 worldSize = Vector3.Scale(box.size, obj.transform.lossyScale);
-
-        Debug.Log($"BoxCollider | Size (local): {box.size}");
-        Debug.Log($"BoxCollider | Size (world): {worldSize}");
-        Debug.Log($"BoxCollider | Center: {box.center}");
-    }
-    else
-    {
-        Debug.Log("BoxCollider: NÃO EXISTE");
-    }
-}
-
 }

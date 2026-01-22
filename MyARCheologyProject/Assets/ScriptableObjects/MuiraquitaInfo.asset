@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc49d66f85cf949bcba427739bd8b904, type: 3}
   m_Name: MuiraquitaInfo
   m_EditorClassIdentifier: 
-  objectName: Esfera
-  description: "Este \xE9 a esfera mais descritiva que o mundo j\xE1 viu"
-  icon: {fileID: 21300000, guid: 2f8349570a152884fb6cf7ebdc8c18b3, type: 3}
+  objectName: Muiraquita
+  description: "Este \xE9 o Sr. Muiraquita Da Silva."
+  icon: {fileID: 21300000, guid: 17d565bb4a7744b41b7e4dc7e3a09e35, type: 3}
