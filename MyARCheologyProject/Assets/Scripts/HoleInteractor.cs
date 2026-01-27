@@ -6,7 +6,7 @@ using UnityEngine;
 public class HoleInteractor : MonoBehaviour, IInteractable
 {
     [SerializeField] private GameObject hiddenObject;
-
+    [SerializeField] private SoundEffectHole soundEffect;
     private bool objHasBeenDiscovered = false;
 
     void Start()
@@ -64,7 +64,12 @@ public class HoleInteractor : MonoBehaviour, IInteractable
         objInteractor.OnInteract();
         objHasBeenDiscovered = true;
         gameObject.SetActive(false);
+
+        // play digging sound
+        if (soundEffect != null) soundEffect.playRandomDigSound();
     }
+
+    
 
     IEnumerator Fade(GameObject obj, float start, float end)
     {   
