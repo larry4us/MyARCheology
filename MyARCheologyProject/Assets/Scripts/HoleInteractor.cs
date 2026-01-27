@@ -10,10 +10,24 @@ public class HoleInteractor : MonoBehaviour, IInteractable
     private bool objHasBeenDiscovered = false;
 
     void Start()
-    {
+    {   
+        HideObject(hiddenObject);
+    }
+    
+    private void HideObject(GameObject obj)
+    {   
         SetKinematic(hiddenObject, true);
+        hiddenObject.SetActive(false);
     }
 
+    private void ShowObject(GameObject obj)
+    {
+        //Fade(obj, 0, 1);
+        SetKinematic(hiddenObject, false);
+        objHasBeenDiscovered = true;
+        obj.SetActive(true);
+    }
+    
     private void SetKinematic(GameObject obj, bool boolean)
     {
         Rigidbody rigidBody = obj.GetComponent<Rigidbody>();
@@ -57,19 +71,11 @@ public class HoleInteractor : MonoBehaviour, IInteractable
     private void Cave()
     {
         Debug.Log("Tentando cavar.");
-        CavingSound();
+        DiggingSound();
         var objInteractor = hiddenObject.GetComponent<ObjectInteractor>();
-        Fade(hiddenObject, 0, 1);
-        SetKinematic(hiddenObject, false);
+        ShowObject(hiddenObject);
         objInteractor.OnInteract();
-        objHasBeenDiscovered = true;
-        gameObject.SetActive(false);
-
-        // play digging sound
-        if (soundEffect != null) soundEffect.playRandomDigSound();
     }
-
-    
 
     IEnumerator Fade(GameObject obj, float start, float end)
     {   
@@ -86,8 +92,9 @@ public class HoleInteractor : MonoBehaviour, IInteractable
         }
     }
 
-    private void CavingSound()
+    private void DiggingSound()
     {
-
+        // play digging sound
+        if (soundEffect != null) soundEffect.playRandomDigSound();
     }
 }
