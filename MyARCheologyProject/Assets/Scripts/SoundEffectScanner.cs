@@ -16,7 +16,7 @@ public class SoundEffectScanner : MonoBehaviour
     }
 
     public void stopScanningSound()
-    {
+    {   
         audioSource.Stop();
         audioSource.loop = false;
     }
