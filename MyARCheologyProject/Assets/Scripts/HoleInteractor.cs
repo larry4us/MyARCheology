@@ -7,6 +7,7 @@ public class HoleInteractor : MonoBehaviour, IInteractable
 {
     [SerializeField] private GameObject hiddenObject;
     [SerializeField] private SoundEffectHole soundEffect;
+
     private bool objHasBeenDiscovered = false;
 
     void Start()
@@ -26,6 +27,7 @@ public class HoleInteractor : MonoBehaviour, IInteractable
         SetKinematic(hiddenObject, false);
         objHasBeenDiscovered = true;
         obj.SetActive(true);
+        gameObject.SetActive(false);
     }
     
     private void SetKinematic(GameObject obj, bool boolean)

@@ -8,6 +8,8 @@ public class ScannerController : MonoBehaviour
     [SerializeField] private SpotController spot;
     [SerializeField] private float scanDuration = 4f;
     [SerializeField] GameObject scanUI;
+
+    [SerializeField] private SoundEffectScanner soundEffect;
     private Animator scannerAnimator;
 
     void Start()
@@ -42,6 +44,7 @@ public class ScannerController : MonoBehaviour
 
             if (obj.TryGetComponent(out ObjectInteractor interactor))
             {
+                if (soundEffect != null) soundEffect.playScanningSound();
                 StartCoroutine(StartScanning(interactor));
             }
 
@@ -66,6 +69,7 @@ public class ScannerController : MonoBehaviour
 
         interactor.SetLocked(false);
         interactor.SetScanned(true);
+        if (soundEffect != null) soundEffect.stopScanningSound();
     }
 
 }

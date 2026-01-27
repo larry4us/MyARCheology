@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d09ed65f7f85d42f9b9592916af70da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredArea: 1
+  requiredArea: 1.5
   planeManager: {fileID: 151853166}
   startExperienceUI: {fileID: 1353321742}
   startExperience: {fileID: 558608058}
