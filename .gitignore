@@ -39,3 +39,10 @@ sysinfo.txt
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# Crash dumps / logs do Mono/Unity
+mono_crash.mem
+mono_crash.*.mem
+mono_crash*.mem
+crash_*.log
+*.stackdump
