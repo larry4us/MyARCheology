@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectInfo: {fileID: 11400000, guid: bb1a1995d42f1471f91a968f37fa0ad0, type: 2}
-  infoDisplayHeight: 2
+  infoDisplayHeight: 3
   materialCleaner: {fileID: 2532383794561159685}
 --- !u!54 &4217908501703923534
 Rigidbody:
@@ -588,6 +588,10 @@ PrefabInstance:
     - target: {fileID: 2539149451563441673, guid: 935c27d68e11e44ae9a25eae332b2c38, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927275514760997925, guid: 935c27d68e11e44ae9a25eae332b2c38, type: 3}
+      propertyPath: infoDisplayHeight
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4415463074527339556, guid: 935c27d68e11e44ae9a25eae332b2c38, type: 3}
       propertyPath: m_Name
@@ -1245,6 +1249,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 196601378308852695, guid: b1069e201388e4243a77f45b6daf9a7f, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 517200023715491357, guid: b1069e201388e4243a77f45b6daf9a7f, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1482860465258902999, guid: b1069e201388e4243a77f45b6daf9a7f, type: 3}
