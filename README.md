@@ -3,6 +3,7 @@
 Este repositório contém o projeto de desenvolvimento em Realidade Aumentada (AR) submetido para avaliação no processo de seleção da residência. O projeto explora o ciclo de desenvolvimento em AR, desde a detecção de superfícies até a interação com objetos virtuais.
 
 ## Organização do Repositório
+
 O projeto foi desenvolvido seguindo boas práticas de engenharia de software como Git Workflow e Conventional commits.
 O projeto está estruturado em **duas branches principais** para facilitar a avaliação da replicação técnica e das competências autorais:
 
@@ -34,8 +35,9 @@ Todos os desafios opcionais da trilha foram implementados na branch principal:
 
 
 ### Requisitos para Execução
+
+**Cenas localizadas no diretório: Assets/Scenes/ScanScene**
+
 Unity 2022.3 ou superior.
 
 Dispositivo móvel compatível com ARKit (iOS) ou ARCore (Android).
-
-**Cenas localizadas no diretório: Assets/Scenes/ScanScene**
